@@ -1,0 +1,17 @@
+.Toastify__toast {
+  height: auto;
+  min-height: 52px;
+  padding: 17px 16px;
+  color: var(--color-gray-200);
+  text-align: left;
+  background-color: transparent;
+  overflow: hidden;
+}
+.Toastify__toast:before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-color: var(--color-gray-900);
+  opacity: 0.9;
+  z-index: -1;
+}
