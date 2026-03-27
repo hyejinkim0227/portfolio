@@ -17,7 +17,7 @@ const TopButton = styled.button<{ $isVisible: boolean }>`
   font-size: 1.5rem;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
   cursor: pointer;
-  z-index: 999;
+  z-index: 900; /* 오버레이(999)보다 낮게 설정하여 메뉴가 열렸을 때 뒤로 가도록 함 */
   
   /* 애니메이션 효과 */
   opacity: ${({ $isVisible }) => ($isVisible ? 1 : 0)};
