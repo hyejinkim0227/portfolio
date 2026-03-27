@@ -145,6 +145,24 @@ const MobileMenuRow = styled.button`
   }
 `;
 
+const Overlay = styled.div<{ $isOpen: boolean }>`
+  display: none;
+  
+  @media (max-width: ${({ theme }) => theme.breakpoints.tablet}) {
+    display: block;
+    position: fixed;
+    top: 60px; /* 헤더 높이 아래부터 시작 */
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 999; /* 헤더(1000)보다 낮게 설정 */
+    opacity: ${({ $isOpen }) => ($isOpen ? 1 : 0)};
+    visibility: ${({ $isOpen }) => ($isOpen ? 'visible' : 'hidden')};
+    transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out;
+  }
+`;
+
 interface HeaderProps {
   isDarkMode: boolean;
   toggleTheme: () => void;
@@ -181,9 +199,23 @@ export const Header = ({ isDarkMode, toggleTheme }: HeaderProps) => {
     };
   }, []);
 
+  useEffect(() => {
+    if (isMobileMenuOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'unset';
+    }
+
+    return () => {
+      document.body.style.overflow = 'unset';
+    };
+  }, [isMobileMenuOpen]);
+
   return (
-    <HeaderContainer>
-      <Logo to="/" aria-label="홈으로 이동">Portfolio</Logo>
+    <>
+      <Overlay $isOpen={isMobileMenuOpen} onClick={toggleMobileMenu} aria-hidden="true" />
+      <HeaderContainer>
+        <Logo to="/" aria-label="홈으로 이동">Portfolio</Logo>
       
       <DesktopMenu aria-label="메인 메뉴">
         <MenuItem href="#profile">Profile</MenuItem>
@@ -217,11 +249,12 @@ export const Header = ({ isDarkMode, toggleTheme }: HeaderProps) => {
         {isMobileMenuOpen ? <FiX aria-hidden="true" /> : <FiMenu aria-hidden="true" />}
       </MobileMenuButton>
 
-      <MobileMenu id="mobile-menu" isOpen={isMobileMenuOpen} aria-hidden={!isMobileMenuOpen}>
-        <MenuItem href="#profile" onClick={toggleMobileMenu}>Profile</MenuItem>
-        <MenuItem href="#projects" onClick={toggleMobileMenu}>Projects</MenuItem>
-        <MenuItem href="#contact" onClick={toggleMobileMenu}>Contact</MenuItem>
-      </MobileMenu>
-    </HeaderContainer>
+        <MobileMenu id="mobile-menu" isOpen={isMobileMenuOpen} aria-hidden={!isMobileMenuOpen}>
+          <MenuItem href="#profile" onClick={toggleMobileMenu}>Profile</MenuItem>
+          <MenuItem href="#projects" onClick={toggleMobileMenu}>Projects</MenuItem>
+          <MenuItem href="#contact" onClick={toggleMobileMenu}>Contact</MenuItem>
+        </MobileMenu>
+      </HeaderContainer>
+    </>
   );
 };
