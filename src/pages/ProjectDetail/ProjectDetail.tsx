@@ -4,6 +4,7 @@ import Button from '@/components/common/Button_';
 import Text from '@/components/common/Text';
 import { projectsData } from '@/data/projects';
 import { useEffect } from 'react';
+import IconArrow from '@/components/icons/arrows';
 
 const DetailContainer = styled.div`
   padding: 100px 2rem 4rem;
@@ -19,7 +20,7 @@ const TitleRow = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin-bottom: 1rem;
+  margin: 1rem 0;
   flex-wrap: wrap;
   gap: 1rem;
 `;
@@ -127,11 +128,12 @@ export const ProjectDetail = () => {
       <HeaderSection>
         <Button 
           type="default" 
-          size="small" 
+          // label="목록으로"
+         // size="small" 
           onClick={() => navigate(-1)}
-          styled={{ marginBottom: '2rem' }}
         >
-          ← 목록으로
+          <IconArrow type="prev" width="24px" height="24px" /> 
+
         </Button>
         
         <TitleRow>

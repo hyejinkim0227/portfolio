@@ -221,14 +221,6 @@ export const Header = ({ isDarkMode, toggleTheme }: HeaderProps) => {
         <MenuItem href="#profile" onClick={toggleMobileMenu}>Profile</MenuItem>
         <MenuItem href="#projects" onClick={toggleMobileMenu}>Projects</MenuItem>
         <MenuItem href="#contact" onClick={toggleMobileMenu}>Contact</MenuItem>
-        <MobileMenuRow onClick={() => { toggleFullscreen(); toggleMobileMenu(); }}>
-          {isFullscreen ? <FiMinimize aria-hidden="true" /> : <FiMaximize aria-hidden="true" />}
-          <span>{isFullscreen ? '전체화면 종료' : '전체화면 보기'}</span>
-        </MobileMenuRow>
-        <MobileMenuRow onClick={() => { toggleTheme(); toggleMobileMenu(); }}>
-          {isDarkMode ? <FiSun aria-hidden="true" /> : <FiMoon aria-hidden="true" />}
-          <span>{isDarkMode ? '라이트 모드' : '다크 모드'}</span>
-        </MobileMenuRow>
       </MobileMenu>
     </HeaderContainer>
   );

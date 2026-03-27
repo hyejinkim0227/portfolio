@@ -85,7 +85,7 @@ export const Contact = () => {
         <SectionTitle>Contact Me</SectionTitle>
         <Description>
           새로운 도전을 즐기며, 함께 성장할 수 있는 기회를 기다리고 있습니다.<br />
-          웹 퍼블리싱 및 프론트엔드 개발 관련 제안이나 궁금한 점이 있으시다면 언제든 연락해 주세요.
+          퍼블리싱 및 프론트엔드 개발 관련 제안이나 궁금한 점이 있으시다면 언제든 연락해 주세요.
         </Description>
 
         <ContactGrid>
@@ -105,13 +105,13 @@ export const Contact = () => {
             <Text color="var(--color-gray-600)">카카오톡 1:1 대화</Text>
           </ContactCard>
 
-          <ContactCard href="https://github.com/hyejinkim0227" target="_blank" rel="noopener noreferrer" aria-label="GitHub 프로필 보기">
+          {/* <ContactCard href="https://github.com/hyejinkim0227" target="_blank" rel="noopener noreferrer" aria-label="GitHub 프로필 보기">
             <IconWrapper>
               <FiGithub aria-hidden="true" />
             </IconWrapper>
             <Text type="subTitle" weight="bold" styled={{ marginBottom: '0.5rem' }}>GitHub</Text>
             <Text color="var(--color-gray-600)">@hyejinkim0227</Text>
-          </ContactCard>
+          </ContactCard> */}
         </ContactGrid>
 
         <Footer>
